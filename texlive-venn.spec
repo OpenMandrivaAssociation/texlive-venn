@@ -6,7 +6,7 @@
 # catalog-version undef
 Name:		texlive-venn
 Version:	20071204
-Release:	3
+Release:	4
 Summary:	Creating Venn diagrams with MetaPost
 Group:		Publishing
 URL:		http://www.ctan.org/tex-archive/graphics/metapost/contrib/macros/venn/venn.mp
