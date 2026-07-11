@@ -1,39 +1,19 @@
-Name:		texlive-venn
-Version:	15878
-Release:	2
+%global tl_name venn
+%global tl_revision 15878
+
+Name:		texlive-%{tl_name}
+Version:	%{tl_revision}
+Release:	1
 Summary:	Creating Venn diagrams with MetaPost
 Group:		Publishing
-URL:		https://www.ctan.org/tex-archive/graphics/metapost/contrib/macros/venn/venn.mp
-License:	LPPL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/venn.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/venn.doc.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/graphics/metapost/contrib/macros/venn
+License:	lppl
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/venn.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/venn.doc.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
 MetaPost macros for venn diagrams.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/metapost/venn/venn.mp
-%doc %{_texmfdistdir}/doc/metapost/venn/README
-
-#-----------------------------------------------------------------------
-%prep
-%autosetup -p1 -c -a1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar metapost doc %{buildroot}%{_texmfdistdir}
